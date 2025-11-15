@@ -1,0 +1,23 @@
+{
+  "name": "interviewx",
+  "version": "0.0.1",
+  "description": "- A website for Interviewees.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix client && npm install --prefix server && npm run build --prefix client",
+    "start": "npm run start --prefix server"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuntalojha/InterviewX.git"
+  },
+  "keywords": [],
+  "author": "Kuntal Ojha",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kuntalojha/InterviewX/issues"
+  },
+  "homepage": "https://github.com/kuntalojha/InterviewX#readme"
+}
