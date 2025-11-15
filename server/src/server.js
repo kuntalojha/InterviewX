@@ -1,8 +1,7 @@
 import express from 'express';
-import mongoose from 'mongoose';
-
 // For connecting frontend and backend
 import path from 'path';
+import { connectDB } from './lib/db.js';
 
 const app = express();
 
@@ -31,4 +30,18 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-app.listen(process.env.PORT, () => console.log(`server is running on http://localhost:${process.env.PORT}`));
+
+
+const startServer = async () => {
+  try {
+    await connectDB();
+    app.listen(process.env.PORT, () => {
+      console.log(`server is running on http://localhost:${process.env.PORT}`)
+    });
+  } catch (error) {
+    console.log('Error starting the server', error);
+    process.exit(1); // 0 means success, 1 means failure
+  }
+};
+
+startServer();
