@@ -1,5 +1,6 @@
 import express from 'express';
 import { serve } from 'inngest/express';
+import { clerkMiddleware } from '@clerk/express';
 
 // For connecting frontend and backend
 import path from 'path';
@@ -9,6 +10,11 @@ import cors from 'cors';
 import { inngest, functions } from './lib/inngest.js';
 import { connectDB } from './lib/db.js';
 import { ENV } from './lib/env.js';
+
+// import from middleware
+
+// import from routes
+import chatRoutes from './routes/chat.route.js';
 
 const app = express();
 
@@ -25,6 +31,9 @@ app.use(
   })
 );
 
+// Clerk middleware for authentication
+app.use(clerkMiddleware()); // this will add req.auth()
+
 app.use(
   '/api/inngest',
   serve({
@@ -33,12 +42,21 @@ app.use(
   })
 );
 
+
+app.use("/api/chat",chatRoutes);
+
+
 app.get('/health', (req, res) => {
   res.status(200).json({ message: 'Api is setup and running.' });
 });
-app.get('/book', (req, res) => {
-  res.status(200).json({ message: 'This is the book endpoint.' });
-});
+
+// app.get('/book', (req, res) => {
+//   res.status(200).json({ message: 'This is the book endpoint.' });
+// });
+
+// app.get('/video-calls', protectRoute, (req, res) => {
+//   res.status(200).json({ message: 'Video call endpoint' });
+// });
 
 // Make our app for production
 if (process.env.NODE_ENV === 'production') {
