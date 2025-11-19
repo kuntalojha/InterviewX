@@ -18,7 +18,7 @@ function HomePage() {
         Click Me
       </button>
       <SignedOut>
-        <SignInButton mode="model">
+        <SignInButton mode="modal">
           <button>Login</button>
         </SignInButton>
       </SignedOut>
