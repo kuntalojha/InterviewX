@@ -5,7 +5,7 @@ import { BsArrowRight } from 'react-icons/bs';
 import { SignInButton } from '@clerk/clerk-react';
 
 import { GoZap } from 'react-icons/go';
-import { FaCheck } from 'react-icons/fa6';
+import { FaCheck, FaCode, FaUsers } from 'react-icons/fa6';
 import { IoVideocamOutline } from 'react-icons/io5';
 
 function HomePage() {
@@ -96,7 +96,7 @@ function HomePage() {
             </div>
 
             {/* Stats */}
-            <div className="stats stats-vertical lg:stats-horizontal bg-base-100 shadow-lg">
+            <div className="stats stats-vertical lg:stats-horizontal bg-base-100 shadow-lg ">
               <div className="stat ">
                 <div className="stat-value text-green-500">10k+</div>
                 <div className="stat-title text-green-200">Active User</div>
@@ -118,6 +118,62 @@ function HomePage() {
             alt="Coding"
             className="w-full h-auto rounded-3xl shadow-2xl border-4 border-base-100 hover:scale-105 transition-transform duration-500"
           />
+        </div>
+      </div>
+
+      {/* Feature section */}
+      <div className="max-w-7xl mx-auto px-4 py-20">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4">
+            Everything you need to
+            <span className="text-green-400 font-mono"> Succeed</span>
+          </h2>
+          <p className="text-lg text-base-content/70 max-w-2xl mx-auto">
+            Powerfull features designed to make your coding experience
+            exceptional.
+          </p>
+        </div>
+        {/* Feature Grid */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Feature 1 */}
+          <div className="card bg-base-100 shadow-xl">
+            <div className="card-body items-center text-center">
+              <div className="size-16 bg-green-300/10 rounded-2xl flex items-center justify-center mb-4">
+                <IoVideocamOutline className="size-8 text-green-400" />
+              </div>
+              <h3 className="card-title">HD Video Call</h3>
+              <p className="text-base-content/70">
+                Crystal clear video and adio for seamless communication during
+                coding interviews.
+              </p>
+            </div>
+          </div>
+          {/* Feature 2 */}
+          <div className="card bg-base-100 shadow-xl">
+            <div className="card-body items-center text-center">
+              <div className="size-16 bg-green-300/10 rounded-2xl flex items-center justify-center mb-4">
+                <FaCode className="size-8 text-green-400" />
+              </div>
+              <h3 className="card-title">Live Code Editor</h3>
+              <p className="text-base-content/70">
+                Collaborate in real-time with syntax highlighting and
+                multilanguage live code editor.
+              </p>
+            </div>
+          </div>
+          {/* Feature 3 */}
+          <div className="card bg-base-100 shadow-xl">
+            <div className="card-body items-center text-center">
+              <div className="size-16 bg-green-300/10 rounded-2xl flex items-center justify-center mb-4">
+                <FaUsers className="size-8 text-green-400" />
+              </div>
+              <h3 className="card-title">Easy Collaboration</h3>
+              <p className="text-base-content/70">
+                Share your screen, chat, and collaborate with others in
+                real-time during coding interviews.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
