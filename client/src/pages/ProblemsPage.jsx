@@ -1,9 +1,10 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
 
 const ProblemsPage = () => {
   return (
-    <div>
-      <h1>ProblemsPage</h1>
+    <div className="min-h-screen bg-base-200">
+      <Navbar />
     </div>
   );
 };
