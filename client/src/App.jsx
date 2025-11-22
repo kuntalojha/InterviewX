@@ -9,7 +9,7 @@ import {
 } from '@clerk/clerk-react';
 import { Navigate, Route, Routes } from 'react-router';
 import { Toaster } from 'react-hot-toast';
-
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProblemsPage from './pages/ProblemsPage';
@@ -38,6 +38,7 @@ function App() {
         />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
+      <Footer />
       <Toaster toastOptions={{ duration: 3000 }} />
     </>
   );
