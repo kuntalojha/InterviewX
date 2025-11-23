@@ -218,6 +218,63 @@ print(isPalindrome(" "))  # Expected: True`,
       java: 'true\nfalse\ntrue',
     },
   },
+  'palindrome-number': {
+    id: 'palindrome-number',
+    title: 'Palindrome Number',
+    difficulty: 'Easy',
+    category: 'Math • Two Pointers',
+    description: {
+      text: 'Given an integer x, return true if x is a palindrome, and false otherwise.',
+      notes: ['Do not convert the integer to a string.'],
+    },
+    examples: [
+      { input: 'x = 121', output: 'true' },
+      {
+        input: 'x = -121',
+        output: 'false',
+        explanation: '-121 becomes 121- which is not the same',
+      },
+      { input: 'x = 10', output: 'false' },
+    ],
+    constraints: ['-2³¹ ≤ x ≤ 2³¹ - 1'],
+    starterCode: {
+      javascript: `function isPalindrome(x) {
+  // Write your solution here
+
+}
+
+// Test cases
+console.log(isPalindrome(121)); // Expected: true
+console.log(isPalindrome(-121)); // Expected: false
+console.log(isPalindrome(10)); // Expected: false`,
+      python: `def isPalindrome(x):
+    # Write your solution here
+    pass
+
+# Test cases
+print(isPalindrome(121))  # Expected: True
+print(isPalindrome(-121)) # Expected: False
+print(isPalindrome(10))   # Expected: False`,
+      java: `class Solution {
+    public static boolean isPalindrome(int x) {
+        // Write your solution here
+        
+        return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isPalindrome(121)); // true
+        System.out.println(isPalindrome(-121)); // false
+        System.out.println(isPalindrome(10)); // false
+    }
+}`,
+    },
+    expectedOutput: {
+      javascript: 'true\nfalse\nfalse',
+      python: 'True\nFalse\nFalse',
+      java: 'true\nfalse\nfalse',
+    },
+  },
 
   'maximum-subarray': {
     id: 'maximum-subarray',
@@ -344,6 +401,171 @@ print(maxArea([1,1]))  # Expected: 1`,
       javascript: '49\n1',
       python: '49\n1',
       java: '49\n1',
+    },
+  },
+  'rotate-array': {
+    id: 'rotate-array',
+    title: 'Rotate Array',
+    difficulty: 'Medium',
+    category: 'Array • Two Pointers',
+    description: {
+      text: 'Given an array nums, rotate the array to the right by k steps, where k is non-negative.',
+      notes: ['Try solving it in-place with O(1) extra space.'],
+    },
+    examples: [
+      { input: 'nums = [1,2,3,4,5,6,7], k = 3', output: '[5,6,7,1,2,3,4]' },
+      { input: 'nums = [-1,-100,3,99], k = 2', output: '[3,99,-1,-100]' },
+    ],
+    constraints: [
+      '1 ≤ nums.length ≤ 10⁵',
+      '−2³¹ ≤ nums[i] ≤ 2³¹ − 1',
+      '0 ≤ k ≤ 10⁵',
+    ],
+    starterCode: {
+      javascript: `function rotate(nums, k) {
+  // Write your solution here
+  
+}
+
+// Test cases
+let a = [1,2,3,4,5,6,7];
+rotate(a, 3);
+console.log(a); // [5,6,7,1,2,3,4]
+
+let b = [-1,-100,3,99];
+rotate(b, 2);
+console.log(b); // [3,99,-1,-100]`,
+      python: `def rotate(nums, k):
+    # Write your solution here
+    pass
+
+# Test cases
+a = [1,2,3,4,5,6,7]
+rotate(a, 3)
+print(a)
+
+b = [-1,-100,3,99]
+rotate(b, 2)
+print(b)`,
+      java: `import java.util.*;
+
+class Solution {
+    public static void rotate(int[] nums, int k) {
+        // Write your solution here
+    }
+
+    public static void main(String[] args) {
+        int[] a = {1,2,3,4,5,6,7};
+        rotate(a, 3);
+        System.out.println(Arrays.toString(a));
+
+        int[] b = {-1,-100,3,99};
+        rotate(b, 2);
+        System.out.println(Arrays.toString(b));
+    }
+}`,
+    },
+    expectedOutput: {
+      javascript: '[5,6,7,1,2,3,4]\n[3,99,-1,-100]',
+      python: '[5, 6, 7, 1, 2, 3, 4]\n[3, 99, -1, -100]',
+      java: '[5, 6, 7, 1, 2, 3, 4]\n[3, 99, -1, -100]',
+    },
+  },
+  'median-of-two-sorted-arrays': {
+    id: 'median-of-two-sorted-arrays',
+    title: 'Median of Two Sorted Arrays',
+    difficulty: 'Hard',
+    category: 'Binary Search • Array',
+    description: {
+      text: 'Given two sorted arrays nums1 and nums2, return the median of the two sorted arrays.',
+      notes: ['The overall run time complexity should be O(log(m+n)).'],
+    },
+    examples: [
+      { input: 'nums1 = [1,3], nums2 = [2]', output: '2.0' },
+      { input: 'nums1 = [1,2], nums2 = [3,4]', output: '2.5' },
+    ],
+    constraints: [
+      'nums1.length + nums2.length ≥ 1',
+      '−10⁶ ≤ nums1[i], nums2[i] ≤ 10⁶',
+    ],
+    starterCode: {
+      javascript: `function findMedianSortedArrays(nums1, nums2) {
+  // Write your solution here
+
+}
+
+console.log(findMedianSortedArrays([1,3], [2])); // 2.0
+console.log(findMedianSortedArrays([1,2], [3,4])); // 2.5`,
+      python: `def findMedianSortedArrays(nums1, nums2):
+    # Write your solution here
+    pass
+
+print(findMedianSortedArrays([1,3], [2]))   # 2.0
+print(findMedianSortedArrays([1,2], [3,4])) # 2.5`,
+      java: `class Solution {
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        // Write your solution here
+
+        return 0.0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(findMedianSortedArrays(new int[]{1,3}, new int[]{2}));
+        System.out.println(findMedianSortedArrays(new int[]{1,2}, new int[]{3,4}));
+    }
+}`,
+    },
+    expectedOutput: {
+      javascript: '2.0\n2.5',
+      python: '2.0\n2.5',
+      java: '2.0\n2.5',
+    },
+  },
+  'trapping-rain-water': {
+    id: 'trapping-rain-water',
+    title: 'Trapping Rain Water',
+    difficulty: 'Hard',
+    category: 'Array • Two Pointers • Stack',
+    description: {
+      text: 'Given n non-negative integers representing elevation, compute how much water it can trap.',
+      notes: [],
+    },
+    examples: [
+      { input: 'height = [0,1,0,2,1,0,1,3,2,1,2,1]', output: '6' },
+      { input: 'height = [4,2,0,3,2,5]', output: '9' },
+    ],
+    constraints: ['1 ≤ height.length ≤ 2 * 10⁵', '0 ≤ height[i] ≤ 10⁵'],
+    starterCode: {
+      javascript: `function trap(height) {
+  // Write your solution here
+  
+}
+
+console.log(trap([0,1,0,2,1,0,1,3,2,1,2,1])); // 6
+console.log(trap([4,2,0,3,2,5])); // 9`,
+      python: `def trap(height):
+    # Write your solution here
+    pass
+
+print(trap([0,1,0,2,1,0,1,3,2,1,2,1]))  # 6
+print(trap([4,2,0,3,2,5]))  # 9`,
+      java: `class Solution {
+    public static int trap(int[] height) {
+        // Write your solution here
+
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(trap(new int[]{0,1,0,2,1,0,1,3,2,1,2,1})); // 6
+        System.out.println(trap(new int[]{4,2,0,3,2,5})); // 9
+    }
+}`,
+    },
+    expectedOutput: {
+      javascript: '6\n9',
+      python: '6\n9',
+      java: '6\n9',
     },
   },
 };
