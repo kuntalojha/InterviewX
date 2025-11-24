@@ -36,7 +36,7 @@ function Footer() {
               rel="noopener noreferrer"
               className="text-base-content/60 hover:text-[#057357] transition-colors text-xl"
             >
-              <FaGlobe className="size-6" />
+              <FaGlobe className="size-7" />
             </a>
 
             <a
@@ -45,7 +45,7 @@ function Footer() {
               rel="noopener noreferrer"
               className="text-base-content/60 hover:text-[#057357] transition-colors text-xl"
             >
-              <FaLinkedin className="size-6" />
+              <FaLinkedin className="size-7" />
             </a>
 
             <a
@@ -54,7 +54,7 @@ function Footer() {
               rel="noopener noreferrer"
               className="text-base-content/60 hover:text-[#057357] transition-colors text-xl"
             >
-              <FaGithub className="size-6" />
+              <FaGithub className="size-7" />
             </a>
           </div>
         </div>
