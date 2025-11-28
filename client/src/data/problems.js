@@ -283,7 +283,7 @@ print(isPalindrome(10))   # Expected: False`,
     category: 'Array • Dynamic Programming',
     description: {
       text: 'Given an integer array nums, find the subarray with the largest sum, and return its sum.',
-      notes: [],
+      notes: ['A subarray is a contiguous part of an array.'],
     },
     examples: [
       {
@@ -528,7 +528,9 @@ print(findMedianSortedArrays([1,2], [3,4])) # 2.5`,
     category: 'Array • Two Pointers • Stack',
     description: {
       text: 'Given n non-negative integers representing elevation, compute how much water it can trap.',
-      notes: [],
+      notes: [
+        'The above elevation map is represented by an array of the height of each building, where the width of each building is 1.',
+      ],
     },
     examples: [
       { input: 'height = [0,1,0,2,1,0,1,3,2,1,2,1]', output: '6' },

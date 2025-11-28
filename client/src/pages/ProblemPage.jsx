@@ -32,7 +32,8 @@ function ProblemPage() {
 
   const heandelLanguageChange = (event) => {};
 
-  const handleProblemChange = (event) => {};
+  const handleProblemChange = (newProblemId) =>
+    navigate(`/problem/${newProblemId}`);
 
   const triggerConfetti = () => {};
 
@@ -41,17 +42,23 @@ function ProblemPage() {
   const handleRunCode = () => {};
 
   return (
-    <div className="h-screen w-screen bg-base-100 flex flex-col">
+    <div className="min-h-screen  bg-base-100 flex flex-col">
       <Navbar />
 
       <div className="flex-1">
         <PanelGroup direction="horizontal">
           {/* Left panel-problem description */}
           <Panel defaultSize={40} minSize={30}>
-            <ProblemDescription />
+            <ProblemDescription
+              problem={currentProblem}
+              currentProblemId={currentProblemId}
+              onProblemChange={handleProblemChange}
+              allProblems={Object.values(PROBLEMS)}
+            />
           </Panel>
 
           <PanelResizeHandle className="w-2 bg-base-300 hover:bg-green-600  transition-colors cursor-col-resize" />
+
           {/* Right panel code editor and output panel */}
           <Panel defaultSize={60} minSize={30}>
             <PanelGroup direction="vertical">
@@ -61,6 +68,7 @@ function ProblemPage() {
               </Panel>
 
               <PanelResizeHandle className="h-2 bg-base-300 hover:bg-green-600  transition-colors cursor-col-resize" />
+
               {/* Bottom panel output */}
               <Panel defaultSize={30} minSize={30}>
                 <OutputPanel />

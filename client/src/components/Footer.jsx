@@ -34,7 +34,7 @@ function Footer() {
               href="https://kuntalojha.github.io/MRKUNTALOJHA/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base-content/60 hover:text-[#057357] transition-colors text-xl"
+              className="text-base-content/60 hover:text-[#0ae8ad] transition-colors text-xl"
             >
               <FaGlobe className="size-7" />
             </a>
@@ -43,7 +43,7 @@ function Footer() {
               href="https://linkedin.com/in/mrkuntalojha"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base-content/60 hover:text-[#057357] transition-colors text-xl"
+              className="text-base-content/60 hover:text-[#0ae8ad] transition-colors text-xl"
             >
               <FaLinkedin className="size-7" />
             </a>
@@ -52,7 +52,7 @@ function Footer() {
               href="https://github.com/kuntalojha"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base-content/60 hover:text-[#057357] transition-colors text-xl"
+              className="text-base-content/60 hover:text-[#0ae8ad] transition-colors text-xl"
             >
               <FaGithub className="size-7" />
             </a>
