@@ -7,7 +7,8 @@ import Navbar from '../components/Navbar';
 import ProblemDescription from '../components/ProblemDescription';
 import OutputPanel from '../components/OutputPanel';
 import CodeEditorPanel from '../components/CodeEditorPanel';
-
+import { executeCode } from '../lib/piston';
+import toast from 'react-hot-toast';
 function ProblemPage() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -30,16 +31,63 @@ function ProblemPage() {
     setOutput(null);
   }, [id, selectedLanguage]);
 
-  const heandelLanguageChange = (event) => {};
+  const heandelLanguageChange = (e) => {
+    const newLang = e.target.value;
+    setSelectedLanguage(newLang);
+    setCode(currentProblem.starterCode[newLang]);
+    setOutput(null);
+  };
 
   const handleProblemChange = (newProblemId) =>
     navigate(`/problem/${newProblemId}`);
 
   const triggerConfetti = () => {};
 
-  const checkIfTestCasePasses = () => {};
+  const normalizeOutput = (output) => {
+    // normalize output for comparison (trim whitespace, handle different spacing)
+    return output
+      .trim()
+      .split('\n')
+      .map((line) =>
+        line
+          .trim()
+          // remove spaces after [ and before ]
+          .replace(/\[\s+/g, '[')
+          .replace(/\s+\]/g, ']')
+          // normalize spaces around commas to single space after comma
+          .replace(/\s*,\s*/g, ',')
+      )
+      .filter((line) => line.length > 0)
+      .join('\n');
+  };
 
-  const handleRunCode = () => {};
+  const checkIfTestCasePasses = (actualOutput, expectedOutput) => {
+    const normalizedActua = normalizeOutput(actualOutput);
+    const normalizedExpected = normalizeOutput(expectedOutput);
+    return normalizedActua === normalizedExpected;
+  };
+
+  const handleRunCode = async () => {
+    setIsRunning(true);
+    setOutput(null);
+
+    const result = await executeCode(selectedLanguage, code);
+    setOutput(result);
+    setIsRunning(false);
+
+    //  check is code executed successfully and matches expected output
+
+    if (result.success) {
+      const expectedOutput = currentProblem.expectedOutput[selectedLanguage];
+      const testsPassed = checkIfTestCasePasses(result.output, expectedOutput);
+
+      if (testsPassed) {
+        toast.success = 'All test passed! Great job!';
+      } else {
+        toast.error = 'Test failed! Try again!';
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen  bg-base-100 flex flex-col">
@@ -64,7 +112,14 @@ function ProblemPage() {
             <PanelGroup direction="vertical">
               {/* Top panel code editor */}
               <Panel defaultSize={70} minSize={30}>
-                <CodeEditorPanel />
+                <CodeEditorPanel
+                  selectedLanguage={selectedLanguage}
+                  code={code}
+                  isRunning={isRunning}
+                  onLanguageChange={heandelLanguageChange}
+                  onCodeChange={setCode}
+                  onRunCode={handleRunCode}
+                />
               </Panel>
 
               <PanelResizeHandle className="h-2 bg-base-300 hover:bg-green-600  transition-colors cursor-col-resize" />

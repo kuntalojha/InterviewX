@@ -1,18 +1,16 @@
-const { version } = require('react');
-
-//  Piston api is a service for code execution
+// Piston api is a service for code execution
 const PISTON_API = 'https://emkc.org/api/v2/piston';
 
 const LANGUAGE_OPTIONS = {
-  jsvascript: {
+  javascript: {
     language: 'javascript',
     version: '18.15.0',
   },
-  jsvascript: {
-    python: 'python',
+  python: {
+    language: 'python',
     version: '3.10.0',
   },
-  jsva: {
+  java: {
     language: 'java',
     version: '15.0.2',
   },
@@ -21,9 +19,8 @@ const LANGUAGE_OPTIONS = {
 /**
  * @param {string} language - Programming language
  * @param {string} code - source code to execute
- * @returns {Promise{<success: boolean, output?:string, error?:string }>}
+ * @returns {Promise<{success: boolean, output?: string, error?: string}>}
  */
-
 export async function executeCode(language, code) {
   try {
     const languageConfig = LANGUAGE_OPTIONS[language];
@@ -31,7 +28,7 @@ export async function executeCode(language, code) {
     if (!languageConfig) {
       return {
         success: false,
-        error: `Unsupported language ${language}`,
+        error: `Unsupported language: ${language}`,
       };
     }
 
@@ -46,7 +43,7 @@ export async function executeCode(language, code) {
         files: [
           {
             name: `main.${getFileExtension(language)}`,
-            cntent: code,
+            content: code,
           },
         ],
       }),
@@ -55,7 +52,7 @@ export async function executeCode(language, code) {
     if (!response.ok) {
       return {
         success: false,
-        error: `HTTP error ${response.status}`,
+        error: `HTTP error: ${response.status}`,
       };
     }
 
@@ -85,9 +82,103 @@ export async function executeCode(language, code) {
 
 function getFileExtension(language) {
   const extensions = {
-    jsvascript: 'js',
+    javascript: 'js',
     python: 'py',
     java: 'java',
   };
   return extensions[language] || 'txt';
 }
+
+// const { version } = require('react');
+
+// //  Piston api is a service for code execution
+// const PISTON_API = 'https://emkc.org/api/v2/piston';
+
+// const LANGUAGE_OPTIONS = {
+//   javascript: {
+//     language: 'javascript',
+//     version: '18.15.0',
+//   },
+//   jsvascript: {
+//     python: 'python',
+//     version: '3.10.0',
+//   },
+//   jsva: {
+//     language: 'java',
+//     version: '15.0.2',
+//   },
+// };
+
+// /**
+//  * @param {string} language - Programming language
+//  * @param {string} code - source code to execute
+//  * @returns {Promise{<success: boolean, output?:string, error?:string }>}
+//  */
+
+// export async function executeCode(language, code) {
+//   try {
+//     const languageConfig = LANGUAGE_OPTIONS[language];
+
+//     if (!languageConfig) {
+//       return {
+//         success: false,
+//         error: `Unsupported language ${language}`,
+//       };
+//     }
+
+//     const response = await fetch(`${PISTON_API}/execute`, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({
+//         language: languageConfig.language,
+//         version: languageConfig.version,
+//         files: [
+//           {
+//             name: `main.${getFileExtension(language)}`,
+//             cntent: code,
+//           },
+//         ],
+//       }),
+//     });
+
+//     if (!response.ok) {
+//       return {
+//         success: false,
+//         error: `HTTP error ${response.status}`,
+//       };
+//     }
+
+//     const data = await response.json();
+//     const output = data.run.output || '';
+//     const stderr = data.run.stderr || '';
+
+//     if (stderr) {
+//       return {
+//         success: false,
+//         output: output,
+//         error: stderr,
+//       };
+//     }
+
+//     return {
+//       success: true,
+//       output: output,
+//     };
+//   } catch (error) {
+//     return {
+//       success: false,
+//       error: `Failed to execute code: ${error.message}`,
+//     };
+//   }
+// }
+
+// function getFileExtension(language) {
+//   const extensions = {
+//     jsvascript: 'js',
+//     python: 'py',
+//     java: 'java',
+//   };
+//   return extensions[language] || 'txt';
+// }
