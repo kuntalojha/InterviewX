@@ -41,8 +41,8 @@ function CodeEditorPanel({
         >
           {isRunning ? (
             <>
-              <AiOutlineLoading3Quarters className="size-4 animate-spin" />
-              <span>Running...</span>
+              <AiOutlineLoading3Quarters className="size-4 animate-spin text-green-100" />
+              <span className="text-green-100">Running...</span>
             </>
           ) : (
             <>
@@ -58,6 +58,7 @@ function CodeEditorPanel({
           height="100%"
           language={LANGUAGE_CONFIG[selectedLanguage].monacoLang}
           value={code}
+          onChange={onCodeChange}
           theme="interviewx-monokai"
           onMount={(editor, monaco) => {
             defineInterviewXTheme(monaco);
