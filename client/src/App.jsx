@@ -14,6 +14,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProblemsPage from './pages/ProblemsPage';
 import DashboardPage from './pages/DashboardPage';
+import ProblemPage from './pages/ProblemPage';
 
 function App() {
   const { isSignedIn, isLoaded } = useUser();
@@ -35,6 +36,10 @@ function App() {
         <Route
           path="/problems"
           element={isSignedIn ? <ProblemsPage /> : <Navigate to={'/'} />}
+        />
+        <Route
+          path="/problem/:id"
+          element={isSignedIn ? <ProblemPage /> : <Navigate to={'/'} />}
         />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
