@@ -27,3 +27,4 @@ dist-ssr
 .DS_Store
 *.pdf
 *.prettierrc
+client/src/tests
